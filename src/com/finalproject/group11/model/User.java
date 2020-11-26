@@ -12,5 +12,8 @@ public class User {
         this.password = password;
     }
 
-    
+    public void login(){}
+    public void logout(){}
+
+
 }
