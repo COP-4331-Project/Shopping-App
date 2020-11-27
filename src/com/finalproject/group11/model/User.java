@@ -12,7 +12,14 @@ public class User {
         this.password = password;
     }
 
+    /**
+     * login()
+     * */
     public void login(){}
+
+    /**
+     * logout()
+     * */
     public void logout(){}
 
 
