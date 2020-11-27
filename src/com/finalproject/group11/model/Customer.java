@@ -10,4 +10,20 @@ public class Customer extends User{
         this.cart = cart;
         this.balance = balance;
     }
+
+
+    /**
+     * add_product_to_cart() - adds a product to the shopping cart
+     *
+     * */
+    public void add_product_to_cart(Product product){}
+
+    /***/
+    public void view_product(Product product){}
+
+    /***/
+    public void browse_product(Product product){}
+
+    /***/
+    public void checkout(){}
 }
