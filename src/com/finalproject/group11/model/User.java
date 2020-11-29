@@ -23,4 +23,7 @@ public class User {
     public void logout(){}
 
 
+    public String getPassword(){return this.password;}
+    public String getUsername(){return this.name;}
+
 }

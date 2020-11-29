@@ -8,9 +8,10 @@ public class GUI {
     public static void main(String[] args) {
 
         JFrame frame = new JFrame("Shop App");
-        frame.setPreferredSize(new Dimension(600, 600));
 
-        frame.setLayout(new FlowLayout());
+        BoxLayout layout = new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS);
+        frame.setLayout(layout);
+
 
         LoginView loginPanel = new LoginView();
         frame.getContentPane().add(loginPanel);
