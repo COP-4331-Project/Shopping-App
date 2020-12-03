@@ -1,10 +1,12 @@
 package com.finalproject.group11.model;
 
+import java.util.Hashtable;
+
 public class Customer extends User{
 
     private Cart cart;
     private double balance;
-
+    private static final String role = "CUSTOMER";
 
     /**
      * Customer constructor calls the super constructor and adds to additional attributes,
@@ -40,4 +42,14 @@ public class Customer extends User{
      * @postcondition:
      * */
     public void checkout(){}
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                super.getUsername() + ", "
+                + " password: " +
+                super.getPassword() + " " +
+                ", balance=" + balance +
+                '}';
+    }
 }

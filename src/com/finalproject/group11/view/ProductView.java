@@ -1,15 +1,7 @@
 package com.finalproject.group11.view;
 
-import com.finalproject.group11.model.Cart;
-
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.concurrent.Flow;
 
 public class ProductView extends JFrame {
 
@@ -149,19 +141,5 @@ public class ProductView extends JFrame {
         frame.add(productContainerScroll);
         frame.pack();
         frame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        ProductView myPV = new ProductView(500, 500);
-
-        // Create productPanels
-        JPanel applePanel = myPV.createProductPanel("Apple","apple.jpg", 1.99, 25, "Freshly Picked!");
-        JPanel orangePanel = myPV.createProductPanel("Orange","orange.jpg", 1.49, 44, "Citrus Sweetness!");
-        JPanel bananaPanel = myPV.createProductPanel("Bananas","bananas.jpg", 3.75, 12, "Ripe & Ready!");
-        JPanel kiwiPanel = myPV.createProductPanel("Kiwi","kiwi.jpg", 1.25, 36, "Green Goodness!");
-        JPanel mangoPanel = myPV.createProductPanel("Mango","mango.jpg", 2.25, 47, "Mango Madness!");
-
-        // Add the productPanels to the productContainer
-        myPV.setUPGUI(applePanel, orangePanel, bananaPanel, kiwiPanel, mangoPanel);
     }
 }

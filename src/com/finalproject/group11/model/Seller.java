@@ -7,6 +7,7 @@ public class Seller extends User{
     // Seller Member Variables
     private ArrayList<Product> seller_products_list;
     private SellerReport report;
+    private static final String role = "SELLER";
 
     // Seller Constructor
     public Seller(int id, String name, String password) {
