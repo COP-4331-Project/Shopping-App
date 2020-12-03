@@ -1,5 +1,6 @@
 package com.finalproject.group11.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -7,7 +8,7 @@ import java.util.ArrayList;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Cart {
+public class Cart implements Serializable {
 
     // Member Variables
     private int id;
