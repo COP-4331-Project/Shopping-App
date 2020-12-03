@@ -6,6 +6,7 @@ import com.finalproject.group11.model.Seller;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
 
 public class LoginAuthenticate {
 
@@ -13,24 +14,24 @@ public class LoginAuthenticate {
 
         // Load Serialized Customer data
         ObjectInputStream in_cus = new ObjectInputStream(new FileInputStream("customers.dat"));
-        Customer[] customers1 = (Customer[]) in_cus.readObject();
+        ArrayList<Customer> customers = (ArrayList<Customer>) in_cus.readObject();
         in_cus.close();
 
 
         /* Load Serialized Seller data */
         ObjectInputStream in_seller = new ObjectInputStream(new FileInputStream("sellers.dat"));
-        Seller[] sellers1 = (Seller[]) in_seller.readObject();
+        ArrayList<Seller> sellers = (ArrayList<Seller>) in_seller.readObject();
         in_seller.close();
 
         // Check if user is a customer
         String p = new String(password);
-        for(Customer c: customers1)
+        for(Customer c: customers)
         {
             if(username.equals(c.getUsername()) && p.equals(c.getPassword())) return c.getRole();
         }
 
 
-        for(Seller s: sellers1)
+        for(Seller s: sellers)
         {
             if(username.equals(s.getUsername()) && p.equals(s.getPassword())) return s.getRole();
         }
