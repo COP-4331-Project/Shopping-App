@@ -24,9 +24,7 @@ public class User implements Serializable {
      * */
     public void logout(){}
 
-
     public String getPassword(){return this.password;}
     public String getUsername(){return this.name;}
-
 
 }

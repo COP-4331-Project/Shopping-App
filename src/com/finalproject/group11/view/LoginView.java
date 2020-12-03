@@ -14,6 +14,7 @@ public class LoginView extends JPanel{
     private static JTextField usernameTextField;
     private JPasswordField passwordField;
     private JButton loginButton;
+    private JButton registerButton;
     private JLabel usernameLabel;
     private JLabel passwordLabel;
 
@@ -24,6 +25,7 @@ public class LoginView extends JPanel{
         passwordField = new JPasswordField(15);
 
         loginButton = new JButton("Login");
+        registerButton = new JButton("Register");
 
         usernameLabel = new JLabel("Username: ");
         passwordLabel = new JLabel("Password: ");
@@ -36,6 +38,7 @@ public class LoginView extends JPanel{
         this.add(passwordLabel);
         this.add(passwordField);
         this.add(loginButton);
+        this.add(registerButton);
 
         loginButton.addActionListener(new ActionListener() {
 
@@ -81,6 +84,16 @@ public class LoginView extends JPanel{
         });
 
 
+        registerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String username = usernameTextField.getText();
+                char[] p = passwordField.getPassword();
+                String password = new String(p);
+
+
+            }
+        });
 
     }
 }
