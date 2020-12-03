@@ -1,19 +1,12 @@
 package com.finalproject.group11.controller;
 
 import com.finalproject.group11.model.Customer;
-import com.finalproject.group11.model.User;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
 public class LoginAuthenticate {
-    public static boolean authenticate(String username, char[] password) {
-        String p = new String(password);
-        // hardcoded username and password
-        return username.equals("bob") && p.equals("secret");
-    }
 
     public static boolean passwordCheck(String username, char[] password) throws IOException, ClassNotFoundException {
 

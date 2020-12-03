@@ -55,7 +55,9 @@ public class LoginView extends JPanel{
                 }
 
 
-                // TODO: return new swing component that renders the catalogue of products if user is Customer
+
+                // if user that logged in is a Customer, a dashboard of products is returned.
+
                 ProductView myPV = new ProductView(500, 500);
 
                 // Create productPanels
