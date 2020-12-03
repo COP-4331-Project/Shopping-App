@@ -48,6 +48,7 @@ public class ProductView extends JFrame {
         // Add a buy btn action listener
         buyBtn.addActionListener(e -> {
             System.out.println("Buy button pressed for " + title);
+
             if(title.equals("Apple") && appleCount < units) {
                 appleCount += 1;
                 // Call the method to decrement the number of units of a product
@@ -57,6 +58,7 @@ public class ProductView extends JFrame {
                 this.subtotal += price;
                 subtotalLabel.setText(String.format("Shopping Cart Subtotal: $%.2f", this.subtotal));
                 System.out.println("The subtotal is now $" + this.subtotal);
+
             } else if(title.equals("Orange") && orangeCount < units) {
                 orangeCount += 1;
                 // Call the method to decrement the number of units of a product
@@ -66,6 +68,7 @@ public class ProductView extends JFrame {
                 this.subtotal += price;
                 subtotalLabel.setText(String.format("Shopping Cart Subtotal: $%.2f", this.subtotal));
                 System.out.println("The subtotal is now $" + this.subtotal);
+
             } else if(title.equals("Bananas") && bananasCount < units) {
                 bananasCount += 1;
                 // Call the method to decrement the number of units of a product
@@ -75,6 +78,7 @@ public class ProductView extends JFrame {
                 this.subtotal += price;
                 subtotalLabel.setText(String.format("Shopping Cart Subtotal: $%.2f", this.subtotal));
                 System.out.println("The subtotal is now $" + this.subtotal);
+
             } else if(title.equals("Kiwi") && kiwiCount < units) {
                 kiwiCount += 1;
                 // Call the method to decrement the number of units of a product
@@ -84,6 +88,7 @@ public class ProductView extends JFrame {
                 this.subtotal += price;
                 subtotalLabel.setText(String.format("Shopping Cart Subtotal: $%.2f", this.subtotal));
                 System.out.println("The subtotal is now $" + this.subtotal);
+
             } else if(title.equals("Mango") && mangoCount < units) {
                 mangoCount += 1;
                 // Call the method to decrement the number of units of a product
@@ -99,6 +104,7 @@ public class ProductView extends JFrame {
 
         // Add the productPanel to the productContainer
         productPanel.add(infoPanel);
+
         return productPanel;
     }
 

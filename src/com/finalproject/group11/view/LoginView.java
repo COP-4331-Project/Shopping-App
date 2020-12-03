@@ -61,11 +61,11 @@ public class LoginView extends JPanel{
                 ProductView myPV = new ProductView(500, 500);
 
                 // Create productPanels
-                JPanel applePanel = myPV.createProductPanel("Apple","apple.jpg", 1.99, 25, "Freshly Picked!");
-                JPanel orangePanel = myPV.createProductPanel("Orange","orange.jpg", 1.49, 44, "Citrus Sweetness!");
-                JPanel bananaPanel = myPV.createProductPanel("Bananas","bananas.jpg", 3.75, 12, "Ripe & Ready!");
-                JPanel kiwiPanel = myPV.createProductPanel("Kiwi","kiwi.jpg", 1.25, 36, "Green Goodness!");
-                JPanel mangoPanel = myPV.createProductPanel("Mango","mango.jpg", 2.25, 47, "Mango Madness!");
+                JPanel applePanel = myPV.createProductPanel("Apple","assets/images/apple.jpg", 1.99, 25, "Freshly Picked!");
+                JPanel orangePanel = myPV.createProductPanel("Orange","assets/images/orange.jpg", 1.49, 44, "Citrus Sweetness!");
+                JPanel bananaPanel = myPV.createProductPanel("Bananas","assets/images/bananas.jpg", 3.75, 12, "Ripe & Ready!");
+                JPanel kiwiPanel = myPV.createProductPanel("Kiwi","assets/images/kiwi.jpg", 1.25, 36, "Green Goodness!");
+                JPanel mangoPanel = myPV.createProductPanel("Mango","assets/images/mango.jpg", 2.25, 47, "Mango Madness!");
 
                 // Add the productPanels to the productContainer
                 myPV.setUPGUI(applePanel, orangePanel, bananaPanel, kiwiPanel, mangoPanel);
