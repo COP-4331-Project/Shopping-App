@@ -47,7 +47,27 @@ public class LoginView extends JPanel{
                 System.out.println(password);
 
                 try {
-                    LoginAuthenticate.passwordCheck(username, password);
+                    if(LoginAuthenticate.passwordCheck(username, password) == "CUSTOMER")
+                    {
+                        // if user that logged in is a Customer, a dashboard of products is returned.
+                        ProductView myPV = new ProductView(500, 500);
+
+                        // Create productPanels
+                        JPanel applePanel = myPV.createProductPanel("Apple","assets/images/apple.jpg", 1.99, 25, "Freshly Picked!");
+                        JPanel orangePanel = myPV.createProductPanel("Orange","assets/images/orange.jpg", 1.49, 44, "Citrus Sweetness!");
+                        JPanel bananaPanel = myPV.createProductPanel("Bananas","assets/images/bananas.jpg", 3.75, 12, "Ripe & Ready!");
+                        JPanel kiwiPanel = myPV.createProductPanel("Kiwi","assets/images/kiwi.jpg", 1.25, 36, "Green Goodness!");
+                        JPanel mangoPanel = myPV.createProductPanel("Mango","assets/images/mango.jpg", 2.25, 47, "Mango Madness!");
+
+                        // Add the productPanels to the productContainer
+                        myPV.setUPGUI(applePanel, orangePanel, bananaPanel, kiwiPanel, mangoPanel);
+
+                        System.out.println("You are logged in as Customer.");
+                    }else if(LoginAuthenticate.passwordCheck(username, password) == "SELLER"){
+                        System.out.println("You are logged in as a Seller.");
+                    }
+
+
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 } catch (ClassNotFoundException classNotFoundException) {
@@ -55,20 +75,6 @@ public class LoginView extends JPanel{
                 }
 
 
-
-                // if user that logged in is a Customer, a dashboard of products is returned.
-
-                ProductView myPV = new ProductView(500, 500);
-
-                // Create productPanels
-                JPanel applePanel = myPV.createProductPanel("Apple","assets/images/apple.jpg", 1.99, 25, "Freshly Picked!");
-                JPanel orangePanel = myPV.createProductPanel("Orange","assets/images/orange.jpg", 1.49, 44, "Citrus Sweetness!");
-                JPanel bananaPanel = myPV.createProductPanel("Bananas","assets/images/bananas.jpg", 3.75, 12, "Ripe & Ready!");
-                JPanel kiwiPanel = myPV.createProductPanel("Kiwi","assets/images/kiwi.jpg", 1.25, 36, "Green Goodness!");
-                JPanel mangoPanel = myPV.createProductPanel("Mango","assets/images/mango.jpg", 2.25, 47, "Mango Madness!");
-
-                // Add the productPanels to the productContainer
-                myPV.setUPGUI(applePanel, orangePanel, bananaPanel, kiwiPanel, mangoPanel);
                 usernameTextField.setText("");
                 passwordField.setText("");
             }

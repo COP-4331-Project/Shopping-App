@@ -1,4 +1,6 @@
 package com.finalproject.group11.model;
 
-public class Inventory {
+import java.io.Serializable;
+
+public class Inventory implements Serializable {
 }

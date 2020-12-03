@@ -43,6 +43,8 @@ public class Customer extends User{
      * */
     public void checkout(){}
 
+    public String getRole(){return this.role;}
+
     @Override
     public String toString() {
         return "Customer{" +

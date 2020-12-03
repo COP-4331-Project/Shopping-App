@@ -1,9 +1,10 @@
 package com.finalproject.group11.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Order {
+public class Order implements Serializable {
 	int id;
 	double total = 0;
 	Cart cart;

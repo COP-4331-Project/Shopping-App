@@ -1,8 +1,9 @@
 package com.finalproject.group11.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Seller extends User{
+public class Seller extends User implements Serializable {
 
     // Seller Member Variables
     private ArrayList<Product> seller_products_list;
@@ -31,4 +32,6 @@ public class Seller extends User{
     public void view_seller_report() {
         // Show the the current profit, revenue, and sales when the Seller selects to
     }
+
+    public String getRole(){return this.role;}
 }
