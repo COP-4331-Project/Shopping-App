@@ -28,4 +28,5 @@ public class User implements Serializable {
     public String getPassword(){return this.password;}
     public String getUsername(){return this.name;}
 
+
 }

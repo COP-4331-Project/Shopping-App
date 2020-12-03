@@ -33,4 +33,6 @@ public class Cart implements Serializable {
     public ArrayList<Product> getProductList() {
         return products_list;
     }
+
+
 }
