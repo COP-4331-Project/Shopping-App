@@ -7,7 +7,7 @@ public class GUI {
 
     public static void main(String[] args) {
 
-        JFrame frame = new JFrame("Shop App");
+        JFrame frame = new JFrame("Shopping App");
 
         BoxLayout layout = new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS);
         frame.setLayout(layout);

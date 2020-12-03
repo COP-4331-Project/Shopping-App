@@ -1,7 +1,6 @@
 package com.finalproject.group11.view;
 
 import com.finalproject.group11.controller.LoginAuthenticate;
-import com.finalproject.group11.controller.UserController;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
