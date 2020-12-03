@@ -32,7 +32,6 @@ public class LoginView extends JPanel{
 
         this.setBorder(new LineBorder(Color.blue));
 
-
         this.add(usernameLabel);
         this.add(usernameTextField);
         this.add(passwordLabel);
@@ -69,15 +68,11 @@ public class LoginView extends JPanel{
                     }else if(LoginAuthenticate.passwordCheck(username, password) == "SELLER"){
                         System.out.println("You are logged in as a Seller.");
                     }
-
-
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 } catch (ClassNotFoundException classNotFoundException) {
                     classNotFoundException.printStackTrace();
                 }
-
-
                 usernameTextField.setText("");
                 passwordField.setText("");
             }
@@ -90,8 +85,6 @@ public class LoginView extends JPanel{
                 String username = usernameTextField.getText();
                 char[] p = passwordField.getPassword();
                 String password = new String(p);
-
-
             }
         });
 
