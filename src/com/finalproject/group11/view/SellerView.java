@@ -129,7 +129,7 @@ public class SellerView {
 		ProductView productView = new ProductView(25, 50);
 		JPanel allProductsPanel = new JPanel();
 		seller.get_seller_products_list().forEach(product -> {
-			JPanel productPanel = productView.createProductPanel(product.getName(), product.getPrice(),
+			JPanel productPanel = productView.createProductPanel(product.getName(), null, product.getPrice(),
 					product.getQuantity(), product.getDescription());
 			JButton editButton = new JButton("Edit");
 			productPanel.add(editButton);
