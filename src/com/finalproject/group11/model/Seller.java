@@ -21,8 +21,15 @@ public class Seller extends User implements Serializable {
         seller_products_list.add(product);
     }
 
-    public void update_inventory() {
+    public void update_inventory(Product updatedProduct) {
         // Allow the Seller to update the name, price, description, and quantity of all products
+    	for (int i = 0; i < this.get_seller_products_list().size(); i++) {
+    		if (updatedProduct.getId() == this.get_seller_products_list().get(i).getId()) {
+    			this.seller_products_list.remove(i);
+    			this.seller_products_list.add(updatedProduct);
+    			System.out.println("product updated:");
+    		}
+    	}
     }
 
     public void review_inventory() {
@@ -34,4 +41,8 @@ public class Seller extends User implements Serializable {
     }
 
     public String getRole(){return this.role;}
+
+	public ArrayList<Product> get_seller_products_list() {
+		return seller_products_list;
+	}
 }
