@@ -22,7 +22,7 @@ public class ProductView extends JFrame {
         height = h;
     }
 
-    public JPanel createProductPanel(String title, String imgPath, double price, int units, String desc) {
+    public JPanel createProductPanel(String title, double price, int units, String desc) {
         // Making and defining the product panel
         JPanel productPanel = new JPanel();
         productPanel.setLayout(new FlowLayout());
@@ -30,11 +30,6 @@ public class ProductView extends JFrame {
 
         // Adding the product title and image to the productPanel
         productPanel.add(new JLabel(title), SwingConstants.CENTER);
-        ImageIcon img = new ImageIcon(imgPath);
-        Image imgResize = img.getImage();
-        Image newImg = imgResize.getScaledInstance(100,100, java.awt.Image.SCALE_SMOOTH);
-        img = new ImageIcon(newImg);
-        productPanel.add(new JLabel(img));
 
         // Making and defining the infoPanel
         JPanel infoPanel = new JPanel();
