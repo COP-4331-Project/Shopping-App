@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 
 import com.finalproject.group11.model.Product;
 import com.finalproject.group11.model.Seller;
+import com.finalproject.group11.model.SellerReport;
 
 public class SellerView {
 	private Seller seller;
@@ -43,8 +44,6 @@ public class SellerView {
 		sellerPanel.setLayout(new FlowLayout());
 		sellerPanel.setBackground(Color.white);
 
-		JButton addProductButton = createAddProductButton(sellerPanel);
-		sellerPanel.add(addProductButton);
 		return sellerPanel;
 	}
 	
@@ -73,7 +72,6 @@ public class SellerView {
 	        					Integer.parseInt(newProductQuantity.getText()));
 	        			seller.add_product_to_sell(newProduct);
 	        			addProductPanel.removeAll();
-	        			addProductPanel.add(createAddProductButton(addProductPanel));
 	        			addProductPanel.add(displaySellerInventory());
 	        			addProductPanel.revalidate();
 	        			addProductPanel.repaint();
@@ -95,7 +93,7 @@ public class SellerView {
 		JTextField newProductImageSrc = new JTextField("Source", 15);
 		JTextField newProductPrice = new JTextField(String.valueOf(currentProduct.getPrice()), 15);
 		JTextField newProductQuantity= new JTextField(String.valueOf(currentProduct.getQuantity()), 15);
-		JTextField newProductDescription = new JTextField(currentProduct.getName(), 15);
+		JTextField newProductDescription = new JTextField(currentProduct.getDescription(), 15);
 				
 		editProductPanel.add(newProductName);
 		editProductPanel.add(newProductImageSrc);
@@ -125,12 +123,33 @@ public class SellerView {
 	}
 		
 	// Displays the seller's current inventory
-	private JPanel displaySellerInventory() {
+	public JPanel displaySellerInventory() {
+		SellerView sellerView = this;
+		
 		ProductView productView = new ProductView(25, 50);
 		JPanel allProductsPanel = new JPanel();
+		
+		SellerReport sellerReport = new SellerReport(1);
+		sellerReport.setProfit(1);
+		SellerReportView sellerReportView = new SellerReportView(sellerReport);
+		
+		JButton viewSellerReportButton = new JButton("View business details");
+		allProductsPanel.add(viewSellerReportButton);
+		viewSellerReportButton.addActionListener(
+				new ActionListener() {
+	        		public void actionPerformed(ActionEvent event) {
+	        			allProductsPanel.removeAll();
+	        			allProductsPanel.add(sellerReportView.createSellerReportPanel(sellerView));
+	        			allProductsPanel.revalidate();
+	        			allProductsPanel.repaint();
+	        		}
+				}
+			);
+		
 		seller.get_seller_products_list().forEach(product -> {
 			JPanel productPanel = productView.createProductPanel(product.getName(), null, product.getPrice(),
-					product.getQuantity(), product.getDescription());
+					product.getQuantity(), product.getDescription(), false);
+			
 			JButton editButton = new JButton("Edit");
 			productPanel.add(editButton);
 			editButton.addActionListener(
@@ -142,12 +161,14 @@ public class SellerView {
 		        			allProductsPanel.add(editProductPanel);
 		        			allProductsPanel.revalidate();
 		        			allProductsPanel.repaint();
-//		        			allProductsPanel.add()
 		        		}
 					}
 				);
 			allProductsPanel.add(productPanel);
 		});
+		
+		JButton addProductButton = createAddProductButton(allProductsPanel);
+		allProductsPanel.add(addProductButton);
 		
 		return allProductsPanel;
 	}
@@ -161,7 +182,7 @@ public class SellerView {
 
 		Product newProduct1 = new Product(127, "Xbox", 499.99, "New console by Microsoft.", 0);
 		seller.add_product_to_sell(newProduct1);
-
+		
 		JPanel allProductsPanel = sellerView.displaySellerInventory();
 		sellerPanel.add(allProductsPanel);
 		
