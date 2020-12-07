@@ -2,6 +2,8 @@ package com.finalproject.group11.view;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
@@ -65,13 +67,22 @@ public class CheckoutView extends JFrame {
         storeTitle.setFont(new Font("Arial",Font.BOLD,30));
         productContainer.add(storeTitle, new GridLayout(1,1));
 
-        // Making a Your Shopping Cart JLabel
+        // Making and defining the ysc and purchaseTime subPanel
+        JPanel subPanel = new JPanel();
+        subPanel.setLayout(new GridLayout(2,1));
+        subPanel.setBackground(Color.WHITE);
+        // Making a purchaseTime JLabel
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String dateTime = dtf.format(now);
-        JLabel purchaseTime = new JLabel("Your Shopping Cart:", SwingConstants.CENTER);
+        JLabel purchaseTime = new JLabel("(Date & Time of Purchase: " + dateTime + ")", SwingConstants.CENTER);
         purchaseTime.setFont(new Font("Arial",Font.BOLD,15));
-        productContainer.add(purchaseTime, new GridLayout(1,2));
+        // Making a Your Shopping Cart JLabel
+        JLabel ysc = new JLabel("Your Shopping Cart:", SwingConstants.CENTER);
+        ysc.setFont(new Font("Arial",Font.BOLD,15));
+        subPanel.add(purchaseTime, new GridLayout(1,1));
+        subPanel.add(ysc, new GridLayout(2,1));
+        productContainer.add(subPanel, new GridLayout(2,1));
 
         // Only load the items into the productContainer that the buyer bought
         int rows = 3;
@@ -110,6 +121,17 @@ public class CheckoutView extends JFrame {
         // Making a Confirm Purchase button
         rows += 1;
         JButton checkoutBtn = new JButton("Confirm Purchase");
+        // Confirm Purchase Button Action Listener
+        checkoutBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                JOptionPane.showMessageDialog(null, "Thank you for your purchase!\n" + String.format("Your Final Shopping Cart Total Was: $%.2f", subtotal)
+                        + "\nSee you next time!", "Shopping Cart Application" , JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+
+        
         productContainer.add(checkoutBtn, new GridLayout(rows,cols));
 
         JScrollPane productContainerScroll = new JScrollPane();
