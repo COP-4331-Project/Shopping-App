@@ -13,7 +13,7 @@ public class LoginAuthenticate {
 
     public static String passwordCheck(String username, char[] password) throws IOException, ClassNotFoundException {
         UserDB udb = new UserDB();
-
+        udb.printCustomers();
         // Load Serialized Customer data
         /**ObjectInputStream in_cus = new ObjectInputStream(new FileInputStream("customers.dat"));
         ArrayList<Customer> customers = (ArrayList<Customer>) in_cus.readObject();

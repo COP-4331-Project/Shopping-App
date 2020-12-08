@@ -71,7 +71,7 @@ public class RegisterView extends JPanel {
 
 
         // actionListener for confirm button
-        this.confirm.addActionListener(new ActionListener() {
+        confirm.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
