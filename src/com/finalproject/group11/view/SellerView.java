@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 
 import com.finalproject.group11.model.Product;
 import com.finalproject.group11.model.Seller;
+import com.finalproject.group11.model.SellerReport;
 
 public class SellerView {
 	private Seller seller;
@@ -42,8 +43,6 @@ public class SellerView {
 		sellerPanel.setLayout(new FlowLayout());
 		sellerPanel.setBackground(Color.white);
 
-		JButton addProductButton = createAddProductButton(sellerPanel);
-		sellerPanel.add(addProductButton);
 		return sellerPanel;
 	}
 	
@@ -72,7 +71,6 @@ public class SellerView {
 	        					Integer.parseInt(newProductQuantity.getText()));
 	        			seller.add_product_to_sell(newProduct);
 	        			addProductPanel.removeAll();
-	        			addProductPanel.add(createAddProductButton(addProductPanel));
 	        			addProductPanel.add(displaySellerInventory());
 	        			addProductPanel.revalidate();
 	        			addProductPanel.repaint();
@@ -85,17 +83,91 @@ public class SellerView {
 		
 		return addProductPanel;
 	}
+	
+	// Displays a panel with functionality to edit an existing product
+	private JPanel displayEditProductPanel(Seller seller, Product currentProduct) {
+		JPanel editProductPanel = new JPanel();
+				
+		JTextField newProductName = new JTextField(currentProduct.getName(), 15);
+		JTextField newProductImageSrc = new JTextField("Source", 15);
+		JTextField newProductPrice = new JTextField(String.valueOf(currentProduct.getPrice()), 15);
+		JTextField newProductQuantity= new JTextField(String.valueOf(currentProduct.getQuantity()), 15);
+		JTextField newProductDescription = new JTextField(currentProduct.getDescription(), 15);
+				
+		editProductPanel.add(newProductName);
+		editProductPanel.add(newProductImageSrc);
+		editProductPanel.add(newProductPrice);
+		editProductPanel.add(newProductQuantity);
+		editProductPanel.add(newProductDescription);
+		
+		JButton submitProductButton = new JButton("Update product");
+		editProductPanel.add(submitProductButton);
+		
+		submitProductButton.addActionListener(
+				new ActionListener() {
+	        		public void actionPerformed(ActionEvent event) {
+	        			Product updatedProduct = new Product(currentProduct.getId(), newProductName.getText(), Double.parseDouble(newProductPrice.getText()),
+	        					newProductDescription.getText(), Integer.parseInt(newProductQuantity.getText()));
+	        			seller.update_inventory(updatedProduct);
+	        			editProductPanel.removeAll();
+	        			editProductPanel.add(displaySellerInventory());
+	        			editProductPanel.revalidate();
+	        			editProductPanel.repaint();
+	        		}
+				}
+			);
+		
+		
+		return editProductPanel;
+	}
 		
 	// Displays the seller's current inventory
-	private JPanel displaySellerInventory() {
+	public JPanel displaySellerInventory() {
+		SellerView sellerView = this;
+		
 		ProductView productView = new ProductView(25, 50);
 		JPanel allProductsPanel = new JPanel();
-		seller.getSeller_products_list().forEach(product -> {
-			System.out.println(product.getName());
-			JPanel productPanel = productView.createProductPanel(product.getName(), product.getDescription(), 
-					product.getPrice(), product.getQuantity(), product.getDescription());
+		
+		SellerReport sellerReport = new SellerReport(1);
+		sellerReport.setProfit(1);
+		SellerReportView sellerReportView = new SellerReportView(sellerReport);
+		
+		JButton viewSellerReportButton = new JButton("View business details");
+		allProductsPanel.add(viewSellerReportButton);
+		viewSellerReportButton.addActionListener(
+				new ActionListener() {
+	        		public void actionPerformed(ActionEvent event) {
+	        			allProductsPanel.removeAll();
+	        			allProductsPanel.add(sellerReportView.createSellerReportPanel(sellerView));
+	        			allProductsPanel.revalidate();
+	        			allProductsPanel.repaint();
+	        		}
+				}
+			);
+		
+		seller.get_seller_products_list().forEach(product -> {
+			JPanel productPanel = productView.createProductPanel(product.getName(), null, product.getPrice(),
+					product.getQuantity(), product.getDescription(), false);
+			
+			JButton editButton = new JButton("Edit");
+			productPanel.add(editButton);
+			editButton.addActionListener(
+					new ActionListener() {
+		        		public void actionPerformed(ActionEvent event) {
+		        			System.out.println(product.getName());
+		        			allProductsPanel.removeAll();
+		        			JPanel editProductPanel = displayEditProductPanel(seller, product);
+		        			allProductsPanel.add(editProductPanel);
+		        			allProductsPanel.revalidate();
+		        			allProductsPanel.repaint();
+		        		}
+					}
+				);
 			allProductsPanel.add(productPanel);
 		});
+		
+		JButton addProductButton = createAddProductButton(allProductsPanel);
+		allProductsPanel.add(addProductButton);
 		
 		return allProductsPanel;
 	}
@@ -109,11 +181,7 @@ public class SellerView {
 
 		Product newProduct1 = new Product(127, "Xbox", 499.99, "New console by Microsoft.", 0);
 		seller.add_product_to_sell(newProduct1);
-		seller.add_product_to_sell(newProduct1);
-		seller.add_product_to_sell(newProduct1);
-		seller.add_product_to_sell(newProduct1);
-		seller.add_product_to_sell(newProduct1);
-
+		
 		JPanel allProductsPanel = sellerView.displaySellerInventory();
 		sellerPanel.add(allProductsPanel);
 		
