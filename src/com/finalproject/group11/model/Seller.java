@@ -5,20 +5,21 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import com.finalproject.group11.controller.ProductController;
+import com.finalproject.group11.controller.SellerController;
 
-public class Seller extends User implements Serializable {
+public class Seller extends User implements Serializable{
 
     // Seller Member Variables
     private ArrayList<Product> seller_products_list;
-    private SellerReport report;
     private static final String role = "SELLER";
-    ProductController sellerController;
+    SellerController sellerController;
+
 
     // Seller Constructor
-    public Seller(int id, String name, String password) {
+    public Seller(int id, String name, String password) throws FileNotFoundException, IOException {
         super(id, name, password);
         this.seller_products_list = new ArrayList<Product>();
+        this.sellerController = new SellerController(); 
     }
 
     // Seller Methods
@@ -28,13 +29,13 @@ public class Seller extends User implements Serializable {
 //        sellerController.addProductToInventory(this.seller_products_list);
     }
 
-    public void update_inventory(Product updatedProduct) {
+    public void update_inventory(Product updatedProduct) throws FileNotFoundException, IOException {
         // Allow the Seller to update the name, price, description, and quantity of all products
     	for (int i = 0; i < this.get_seller_products_list().size(); i++) {
     		if (updatedProduct.getId() == this.get_seller_products_list().get(i).getId()) {
     			this.seller_products_list.remove(i);
     			this.seller_products_list.add(updatedProduct);
-//    			sellerController.addProductToInventory(this.seller_products_list);
+//    			this.sellerController.addProductsToInventory();
     			System.out.println("product updated:");
     		}
     	}

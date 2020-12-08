@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Random;
 
 import javax.swing.JButton;
@@ -109,7 +111,14 @@ public class SellerView {
 	        		public void actionPerformed(ActionEvent event) {
 	        			Product updatedProduct = new Product(currentProduct.getId(), newProductName.getText(), Double.parseDouble(newProductPrice.getText()),
 	        					newProductDescription.getText(), Integer.parseInt(newProductQuantity.getText()));
-	        			seller.update_inventory(updatedProduct);
+						try {
+							seller.update_inventory(updatedProduct);
+						} catch (FileNotFoundException e) {
+							e.printStackTrace();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+
 	        			editProductPanel.removeAll();
 	        			editProductPanel.add(displaySellerInventory());
 	        			editProductPanel.revalidate();
@@ -173,7 +182,7 @@ public class SellerView {
 		return allProductsPanel;
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, IOException {
 		Seller seller = new Seller(1, "Matt", "password");
 		SellerView sellerView = new SellerView(seller);
 		
