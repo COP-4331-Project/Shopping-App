@@ -4,6 +4,7 @@ import com.finalproject.group11.model.Cart;
 import com.finalproject.group11.model.Customer;
 //import com.finalproject.group11.users.Placeholder;
 import com.finalproject.group11.model.Seller;
+import com.finalproject.group11.users.UserDB;
 import com.finalproject.group11.users.Users;
 
 import javax.swing.*;
@@ -68,9 +69,6 @@ public class RegisterView extends JPanel {
 
         this.add(confirm);
 
-        this.confirmationPane = new JOptionPane();
-
-
 
         // actionListener for confirm button
         this.confirm.addActionListener(new ActionListener() {
@@ -78,7 +76,7 @@ public class RegisterView extends JPanel {
             public void actionPerformed(ActionEvent e) {
 
                 try {
-                    Users users = new Users();
+                    UserDB users = new UserDB();
                     System.out.println(users);
 
 
@@ -89,18 +87,24 @@ public class RegisterView extends JPanel {
                         char[] password_char = passwordField.getPassword();
                         String password = new String(password_char);
 
-                        Customer c = new Customer(users.getCustomerAmount() + 1, username, password, new Cart(), 100.00);
-                        users.writeCustomer(c);
+                        Customer c = new Customer(users.getCustomers().size() + 1, username, password, new Cart(), 100.00);
+                        users.addCustomer(c);
                         JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "User created!");
+                        users.printCustomers();
 
                     }
                     else if(sellerRole.isSelected())
                     {
                         System.out.println("New user is seller");
+                        String username = nameTextField.getText();
+                        char[] password_char = passwordField.getPassword();
+                        String password = new String(password_char);
+
+                        //Seller s = new Seller();
 
                     }
 
-                } catch (IOException | ClassNotFoundException ioException) {
+                } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }
             }
@@ -113,6 +117,7 @@ public class RegisterView extends JPanel {
         JFrame frame = new JFrame("Register");
         frame.setBackground(new Color(160, 4, 55));
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
 
         JPanel r = new RegisterView();
         frame.getContentPane().add(r);
