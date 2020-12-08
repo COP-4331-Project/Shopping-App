@@ -1,8 +1,9 @@
 package com.finalproject.group11.model;
 
-import java.util.Hashtable;
+import java.io.Serializable;
 
-public class Customer extends User{
+
+public class Customer extends User implements Serializable {
 
     private Cart cart;
     private double balance;

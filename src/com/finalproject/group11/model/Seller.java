@@ -10,9 +10,10 @@ import com.finalproject.group11.controller.SellerController;
 public class Seller extends User implements Serializable{
 
     // Seller Member Variables
-    private ArrayList<Product> seller_products_list;
+    transient private ArrayList<Product> seller_products_list;
     private static final String role = "SELLER";
-    SellerController sellerController;
+    transient SellerController sellerController;
+    private static final long serialVersionUID = 3922558168240961117L;
 
 
     // Seller Constructor

@@ -2,7 +2,7 @@ package com.finalproject.group11.model;
 
 import java.io.Serializable;
 
-public class SellerReport {
+public class SellerReport implements Serializable{
 
     // SellerReport Member Variables
     private int seller_id;

@@ -2,7 +2,8 @@ package com.finalproject.group11.view;
 
 import com.finalproject.group11.model.Cart;
 import com.finalproject.group11.model.Customer;
-import com.finalproject.group11.users.Placeholder;
+//import com.finalproject.group11.users.Placeholder;
+import com.finalproject.group11.model.Seller;
 import com.finalproject.group11.users.Users;
 
 import javax.swing.*;
@@ -24,6 +25,7 @@ public class RegisterView extends JPanel {
     private JLabel customerRoleLabel;
     private JLabel sellerRoleLabel;
     private ButtonGroup g;
+    private static JOptionPane confirmationPane;
 
 
     public RegisterView()
@@ -66,6 +68,10 @@ public class RegisterView extends JPanel {
 
         this.add(confirm);
 
+        this.confirmationPane = new JOptionPane();
+
+
+
         // actionListener for confirm button
         this.confirm.addActionListener(new ActionListener() {
             @Override
@@ -73,6 +79,7 @@ public class RegisterView extends JPanel {
 
                 try {
                     Users users = new Users();
+                    System.out.println(users);
 
 
                     if(customerRole.isSelected())
@@ -82,21 +89,19 @@ public class RegisterView extends JPanel {
                         char[] password_char = passwordField.getPassword();
                         String password = new String(password_char);
 
-                        Customer c = new Customer(users.getSellerAmount(), username, password, new Cart(), 100.00);
+                        Customer c = new Customer(users.getCustomerAmount() + 1, username, password, new Cart(), 100.00);
                         users.writeCustomer(c);
+                        JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "User created!");
 
                     }
                     else if(sellerRole.isSelected())
                     {
                         System.out.println("New user is seller");
+
                     }
 
-
-
-                } catch (IOException ioException) {
+                } catch (IOException | ClassNotFoundException ioException) {
                     ioException.printStackTrace();
-                } catch (ClassNotFoundException classNotFoundException) {
-                    classNotFoundException.printStackTrace();
                 }
             }
         });

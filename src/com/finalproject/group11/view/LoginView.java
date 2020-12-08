@@ -8,8 +8,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.io.Serial;
+import java.io.Serializable;
 
-public class LoginView extends JPanel{
+public class LoginView extends JPanel implements Serializable {
 
     private static JTextField usernameTextField;
     private JPasswordField passwordField;
@@ -69,10 +71,8 @@ public class LoginView extends JPanel{
                     }else if(LoginAuthenticate.passwordCheck(username, password) == "SELLER"){
                         System.out.println("You are logged in as a Seller.");
                     }
-                } catch (IOException ioException) {
+                } catch (IOException | ClassNotFoundException ioException) {
                     ioException.printStackTrace();
-                } catch (ClassNotFoundException classNotFoundException) {
-                    classNotFoundException.printStackTrace();
                 }
                 usernameTextField.setText("");
                 passwordField.setText("");
