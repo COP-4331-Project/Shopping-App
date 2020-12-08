@@ -1,8 +1,4 @@
 package com.finalproject.group11.view;
-
-import com.finalproject.group11.model.Cart;
-import com.finalproject.group11.model.Customer;
-import com.finalproject.group11.model.Seller;
 import com.finalproject.group11.users.Placeholder;
 
 import javax.swing.*;

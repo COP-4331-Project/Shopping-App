@@ -33,5 +33,7 @@ public class Seller extends User implements Serializable {
         // Show the the current profit, revenue, and sales when the Seller selects to
     }
 
+    public ArrayList<Product> getSeller_products_list(){return this.seller_products_list;}
+
     public String getRole(){return this.role;}
 }
