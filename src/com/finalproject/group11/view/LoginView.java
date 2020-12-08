@@ -8,8 +8,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.io.Serial;
+import java.io.Serializable;
 
-public class LoginView extends JPanel{
+public class LoginView extends JPanel implements Serializable {
 
     private static JTextField usernameTextField;
     private JPasswordField passwordField;
@@ -21,6 +23,7 @@ public class LoginView extends JPanel{
     public LoginView() {
 
         this.setPreferredSize(new Dimension(200, 400));
+
         usernameTextField = new JTextField(15);
         passwordField = new JPasswordField(15);
 
@@ -68,25 +71,20 @@ public class LoginView extends JPanel{
                     }else if(LoginAuthenticate.passwordCheck(username, password) == "SELLER"){
                         System.out.println("You are logged in as a Seller.");
                     }
-                } catch (IOException ioException) {
+                } catch (IOException | ClassNotFoundException ioException) {
                     ioException.printStackTrace();
-                } catch (ClassNotFoundException classNotFoundException) {
-                    classNotFoundException.printStackTrace();
                 }
                 usernameTextField.setText("");
                 passwordField.setText("");
             }
         });
 
-
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String username = usernameTextField.getText();
-                char[] p = passwordField.getPassword();
-                String password = new String(p);
+                System.out.println("Register button pressed");
+                RegisterView.setUpGui();
             }
         });
-
     }
 }

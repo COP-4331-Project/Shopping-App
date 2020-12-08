@@ -7,10 +7,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.finalproject.group11.model.Seller;
 import com.finalproject.group11.model.SellerReport;
 
 public class SellerReportView {
+
 	private SellerReport sellerReport;
 	
 	public SellerReportView(SellerReport sellerReport) {

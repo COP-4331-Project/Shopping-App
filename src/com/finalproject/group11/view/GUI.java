@@ -1,9 +1,9 @@
 package com.finalproject.group11.view;
-import com.finalproject.group11.users.Placeholder;
+//import com.finalproject.group11.users.Placeholder;
 
 import javax.swing.*;
 import java.io.*;
-import java.util.ArrayList;
+
 
 public class GUI {
 
@@ -17,8 +17,7 @@ public class GUI {
         LoginView loginPanel = new LoginView();
         frame.getContentPane().add(loginPanel);
 
-        Placeholder.init();
-
+        frame.setLocationRelativeTo(null);
         frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
