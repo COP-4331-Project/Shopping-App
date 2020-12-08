@@ -13,10 +13,23 @@ import com.finalproject.group11.model.SellerReport;
 public class SellerReportView {
 	private SellerReport sellerReport;
 	
+	/**
+	 * Constructs a new SellerReportView object based on a SellerReport
+	 * @param sellerReport the SellerReport to view
+	 * @return SellerReportView with seller report
+	 * @author Matthew Taylor
+	 *  */
 	public SellerReportView(SellerReport sellerReport) {
 		this.sellerReport = sellerReport;
 	}
 	
+	/**
+	 * Returns a JButton with functionality to move back from current view to the parent view
+	 * @param JPanel the panel to add the button to
+	 * @param SellerView the view to return to once the button is pressed
+	 * @return JButton to move back from current view
+	 * @author Matthew Taylor
+	 *  */
 	private JButton createBackButton(JPanel panel, SellerView sellerView) {
 		JButton backButton = new JButton("Back to inventory");
 		backButton.addActionListener(
@@ -32,6 +45,12 @@ public class SellerReportView {
 		return backButton;
 	}
 	
+	/**
+	 * Returns a JPanel that displays the seller report
+	 * @param SellerView the view to return to once the button is pressed
+	 * @return JPanel with seller report displayed
+	 * @author Matthew Taylor
+	 *  */
 	public JPanel createSellerReportPanel(SellerView sellerView) {
 		JPanel sellerReportPanel = new JPanel();
 		JButton backToInventoryButton = createBackButton(sellerReportPanel, sellerView);
