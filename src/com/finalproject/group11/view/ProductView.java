@@ -115,7 +115,7 @@ public class ProductView extends JFrame {
 
     public void setUPGUI(JPanel ...productPanel) {
         // Making and defining the frame
-        JFrame frame = new JFrame("ProductView");
+        JFrame frame = new JFrame("Product View");
         frame.setLayout(new BorderLayout());
         frame.setSize(width, height);
         frame.setBounds(0,0, 1000,1000);
