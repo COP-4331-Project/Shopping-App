@@ -2,7 +2,7 @@ package com.finalproject.group11.model;
 
 import java.io.Serializable;
 
-public class Product implements Serializable {
+public class Product implements Serializable{
 
     // Product Member Variables
     private int id;
@@ -62,5 +62,4 @@ public class Product implements Serializable {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    
 }

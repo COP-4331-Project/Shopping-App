@@ -2,14 +2,14 @@ package com.finalproject.group11.model;
 
 import java.io.Serializable;
 
-public class User implements Serializable {
+public class User {
 
     private int id;
     private String name;
     private String password;
 
     public User(int id, String name, String password){
-        this.id = id;
+        this.setId(id);
         this.name = name;
         this.password = password;
     }
@@ -26,5 +26,13 @@ public class User implements Serializable {
 
     public String getPassword(){return this.password;}
     public String getUsername(){return this.name;}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 }

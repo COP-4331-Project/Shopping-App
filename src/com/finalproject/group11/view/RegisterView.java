@@ -11,6 +11,6 @@ public class RegisterView extends JPanel {
 
     public RegisterView()
     {
-        
+
     }
 }

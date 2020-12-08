@@ -32,7 +32,6 @@ public class LoginView extends JPanel{
 
         this.setBorder(new LineBorder(Color.blue));
 
-
         this.add(usernameLabel);
         this.add(usernameTextField);
         this.add(passwordLabel);
@@ -56,11 +55,11 @@ public class LoginView extends JPanel{
                         ProductView myPV = new ProductView(500, 500);
 
                         // Create productPanels
-                        JPanel applePanel = myPV.createProductPanel("Apple","assets/images/apple.jpg", 1.99, 25, "Freshly Picked!");
-                        JPanel orangePanel = myPV.createProductPanel("Orange","assets/images/orange.jpg", 1.49, 44, "Citrus Sweetness!");
-                        JPanel bananaPanel = myPV.createProductPanel("Bananas","assets/images/bananas.jpg", 3.75, 12, "Ripe & Ready!");
-                        JPanel kiwiPanel = myPV.createProductPanel("Kiwi","assets/images/kiwi.jpg", 1.25, 36, "Green Goodness!");
-                        JPanel mangoPanel = myPV.createProductPanel("Mango","assets/images/mango.jpg", 2.25, 47, "Mango Madness!");
+                        JPanel applePanel = myPV.createProductPanel("Apple","assets/images/apple.jpg", 1.99, 25, "Freshly Picked!", true);
+                        JPanel orangePanel = myPV.createProductPanel("Orange","assets/images/orange.jpg", 1.49, 44, "Citrus Sweetness!", true);
+                        JPanel bananaPanel = myPV.createProductPanel("Bananas","assets/images/bananas.jpg", 3.75, 12, "Ripe & Ready!", true);
+                        JPanel kiwiPanel = myPV.createProductPanel("Kiwi","assets/images/kiwi.jpg", 1.25, 36, "Green Goodness!", true);
+                        JPanel mangoPanel = myPV.createProductPanel("Mango","assets/images/mango.jpg", 2.25, 47, "Mango Madness!", true);
 
                         // Add the productPanels to the productContainer
                         myPV.setUPGUI(applePanel, orangePanel, bananaPanel, kiwiPanel, mangoPanel);
@@ -69,15 +68,11 @@ public class LoginView extends JPanel{
                     }else if(LoginAuthenticate.passwordCheck(username, password) == "SELLER"){
                         System.out.println("You are logged in as a Seller.");
                     }
-
-
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 } catch (ClassNotFoundException classNotFoundException) {
                     classNotFoundException.printStackTrace();
                 }
-
-
                 usernameTextField.setText("");
                 passwordField.setText("");
             }
@@ -90,8 +85,6 @@ public class LoginView extends JPanel{
                 String username = usernameTextField.getText();
                 char[] p = passwordField.getPassword();
                 String password = new String(p);
-
-
             }
         });
 
