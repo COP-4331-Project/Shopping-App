@@ -12,18 +12,26 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.finalproject.group11.controller.SellerController;
 import com.finalproject.group11.model.Product;
 import com.finalproject.group11.model.Seller;
 import com.finalproject.group11.model.SellerReport;
 
 public class SellerView {
 	private Seller seller;
+	private SellerController sellerController;
 	
-	public SellerView(Seller seller) {
+	public SellerView(Seller seller) throws FileNotFoundException, IOException {
 		this.seller = seller;
+		this.sellerController = new SellerController();
 	}
 	
-	// Creates a button to access new product page
+	/**
+	 * Returns a JButton that allows for adding new products
+	 * @param JPanel to add the button to
+	 * @return JButton with actionListener
+	 * @author Matthew Taylor
+	 *  */
 	private JButton createAddProductButton(JPanel panel) {
 		JButton addProductButton = new JButton("Add a new product");
 		addProductButton.addActionListener(
@@ -39,7 +47,11 @@ public class SellerView {
 		return addProductButton;
 	}
 	
-	// Creates the initial seller panel upon login
+	/**
+	 * Creates the initial seller panel upon login
+	 * @return parent JPanel to add other components to
+	 * @author Matthew Taylor
+	 *  */
 	private JPanel createSellerPanel() {
 		JPanel sellerPanel = new JPanel();
 		sellerPanel.setLayout(new FlowLayout());
@@ -48,7 +60,11 @@ public class SellerView {
 		return sellerPanel;
 	}
 	
-	// Displays a panel with functionality to add a new product
+	/**
+	 * Creates a panel that allows for new product detail entry
+	 * @return JPanel with text fields for new product
+	 * @author Matthew Taylor
+	 *  */
 	private JPanel displayAddProductPanel() {
 		JPanel addProductPanel = new JPanel();
 				
@@ -86,7 +102,12 @@ public class SellerView {
 		return addProductPanel;
 	}
 	
-	// Displays a panel with functionality to edit an existing product
+	/**
+	 * Displays a panel with functionality to edit an existing product
+	 * @param seller B
+	 * @return JPanel with text fields to edit existing product's info
+	 * @author Matthew Taylor
+	 *  */
 	private JPanel displayEditProductPanel(Seller seller, Product currentProduct) {
 		JPanel editProductPanel = new JPanel();
 				
@@ -130,7 +151,11 @@ public class SellerView {
 		return editProductPanel;
 	}
 		
-	// Displays the seller's current inventory
+	/**
+	 * Displays the seller's current inventory
+	 * @return JPanel with views for each product in seller's inventory
+	 * @author Matthew Taylor
+	 *  */
 	public JPanel displaySellerInventory() {
 		SellerView sellerView = this;
 		
