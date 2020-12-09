@@ -25,8 +25,12 @@ public class ProductView extends JFrame {
         height = h;
     }
 
-//    public JPanel createProductPanel(String title, String imgPath, double price, int units, String desc, boolean isCustomer) {
-    	public JPanel createProductPanel(Product product, String imgSrc, boolean isCustomer) {
+    /**
+     * Creates a product panel of an item available in the store
+     * @return JPanel of an item available in the store
+     * @author Julian-Justin Djoum
+     **/
+    public JPanel createProductPanel(Product product, String imgSrc, boolean isCustomer) {
 
         // Making and defining the product panel
         JPanel productPanel = new JPanel();
@@ -114,10 +118,14 @@ public class ProductView extends JFrame {
         
         // Add the productPanel to the productContainer
         productPanel.add(infoPanel);
-
         return productPanel;
     }
 
+    /**
+     * Sets up the Store GUI
+     * @return void
+     * @author Julian-Justin Djoum
+     **/
     public void setUPGUI(JPanel ...productPanel) {
         // Making and defining the frame
         JFrame frame = new JFrame("Product View");

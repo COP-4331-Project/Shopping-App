@@ -9,6 +9,11 @@ import java.time.LocalDateTime;
 
 public class CheckoutView extends JFrame {
 
+    /**
+     * Creates a product panel of only the bought products
+     * @return JPanel of bought product
+     * @author Julian-Justin Djoum
+     **/
     public JPanel createBoughtProductPanel(String title, String imgPath, double price, int unitsBought) {
         JPanel boughtProduct = new JPanel();
         boughtProduct.setLayout(new FlowLayout());
@@ -37,6 +42,11 @@ public class CheckoutView extends JFrame {
         return boughtProduct;
     }
 
+    /**
+     * Creates the CheckoutView JFrame
+     * @return CheckoutView JFrame
+     * @author Julian-Justin Djoum
+     **/
     public CheckoutView (int appleCount, int orangeCount, int bananasCount, int kiwiCount, int mangoCount, double subtotal) {
 
         // Making and defining the frame
@@ -131,7 +141,6 @@ public class CheckoutView extends JFrame {
             }
         });
 
-        
         productContainer.add(checkoutBtn, new GridLayout(rows,cols));
 
         JScrollPane productContainerScroll = new JScrollPane();
