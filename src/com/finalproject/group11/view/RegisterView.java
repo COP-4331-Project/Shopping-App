@@ -2,7 +2,6 @@ package com.finalproject.group11.view;
 
 import com.finalproject.group11.model.Cart;
 import com.finalproject.group11.model.Customer;
-//import com.finalproject.group11.users.Placeholder;
 import com.finalproject.group11.model.Seller;
 import com.finalproject.group11.users.UserDB;
 import com.finalproject.group11.users.Users;
@@ -100,7 +99,10 @@ public class RegisterView extends JPanel {
                         char[] password_char = passwordField.getPassword();
                         String password = new String(password_char);
 
-                        //Seller s = new Seller();
+                        Seller s = new Seller(users.getSellers().size() + 1, username, password);
+                        users.addSeller(s);
+                        JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "User created!");
+                        users.printSellers();
 
                     }
 

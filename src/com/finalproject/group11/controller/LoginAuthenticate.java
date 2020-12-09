@@ -1,12 +1,15 @@
+/**
+ * Login Authenticator
+ * ensures user logging in is registered with the shopping app
+ * */
+
 package com.finalproject.group11.controller;
 
 import com.finalproject.group11.model.Customer;
 import com.finalproject.group11.model.Seller;
 import com.finalproject.group11.users.UserDB;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 public class LoginAuthenticate {
@@ -54,7 +57,6 @@ public class LoginAuthenticate {
                 return null;
             }
         }
-
         // User is neither Customer or Seller
         return null;
     }

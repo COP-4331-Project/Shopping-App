@@ -206,8 +206,11 @@ public class SellerView {
 		return allProductsPanel;
 	}
 	
-	public static void main(String[] args) throws FileNotFoundException, IOException {
-		Seller seller = new Seller(1, "Matt", "password");
+	public static void setUpGui(Seller seller) throws FileNotFoundException, IOException
+	{
+		//TODO pass seller as arg
+
+		//Seller seller = new Seller(1, "Matt", "password");
 		SellerView sellerView = new SellerView(seller);
 		
 		JFrame frame = new JFrame("SellerView");

@@ -62,4 +62,13 @@ public class UserDB {
             System.out.println(s.getId() + " " + s.getUsername());
         }
     }
+
+    public Seller getSeller(String username){
+        for(Seller s: sellers){
+            if(s.getUsername().equals(username)){
+                return s;
+            }
+        }
+        return null;
+    }
 }
