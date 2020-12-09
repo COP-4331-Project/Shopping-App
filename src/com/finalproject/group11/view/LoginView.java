@@ -18,7 +18,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.ArrayList;
 
 
 /**
@@ -72,7 +71,8 @@ public class LoginView extends JPanel implements Serializable {
         this.add(new JLabel(img));
 
         /**
-         *
+         * This action listener is in charge of returning the ProductView if the User who logs in is a customer,
+         * or returns a SellerView if the user is a Seller.
          * */
         loginButton.addActionListener(new ActionListener() {
 
@@ -83,7 +83,7 @@ public class LoginView extends JPanel implements Serializable {
                 char[] password = passwordField.getPassword();
                 System.out.println(password);
                 
-             // if user that logged in is a Customer, a dashboard of products is returned.
+             /* if user that logged in is a Customer, a dashboard of products is returned. */
                 ProductView myPV = new ProductView(500, 500);                
                 
                 String[] productImgs = {"assets/images/apple.jpg", "assets/images/orange.jpg", 
@@ -133,11 +133,13 @@ public class LoginView extends JPanel implements Serializable {
             }
         });
 
-        /***/
+        /**
+         * New user is given the option to register with the Shopping Application
+         * Calls RegisterView.setUpGui() which will return the RegisterView JPanel subclass
+         * */
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Register button pressed");
                 RegisterView.setUpGui();
             }
         });

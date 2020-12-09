@@ -1,3 +1,9 @@
+/**
+ * User class
+ * @author Ross Parsons
+ * */
+
+
 package com.finalproject.group11.model;
 
 import java.io.Serializable;
@@ -14,23 +20,34 @@ public class User implements Serializable{
         this.password = password;
     }
 
-    /**
-     * login()
-     * */
-    public void login(){}
 
     /**
-     * logout()
+     * getPassword()
+     * @return password
      * */
-    public void logout(){}
-
     public String getPassword(){return this.password;}
+
+    /**
+     * getUsername()
+     * @return username
+     * */
     public String getUsername(){return this.name;}
 
+
+    /**
+     * getId()
+     * @return id
+     * */
 	public int getId() {
 		return id;
 	}
 
+
+    /**
+     * setId()
+     * @param id
+     * @return void
+     * */
 	public void setId(int id) {
 		this.id = id;
 	}

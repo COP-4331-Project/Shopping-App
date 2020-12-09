@@ -1,3 +1,7 @@
+/**
+ * Customer class, subclass of User
+ * @author Ross Parsons
+ * */
 package com.finalproject.group11.model;
 
 import java.io.Serializable;
@@ -20,29 +24,6 @@ public class Customer extends User implements Serializable {
         this.balance = balance;
     }
 
-
-    /**
-     * add_product_to_cart() - adds a product to the shopping cart
-     * @precondition: product exists in Inventory
-     * @postcondition: product is added to cart object
-     * */
-    public void add_product_to_cart(Product product){}
-
-    /**
-     * view_product() - brings up a swing component displaying product info
-     * note: 'void' may not be the return value, and instead a swing component
-     * */
-    public void view_product(Product product){}
-
-
-    /**
-     * checkout() - brings customer to checkout pane
-     * note: 'void' may not be the return value, and instead a swing component
-     *
-     * @precondition:
-     * @postcondition:
-     * */
-    public void checkout(){}
 
     public String getRole(){return this.role;}
 

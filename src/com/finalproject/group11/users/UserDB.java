@@ -1,3 +1,8 @@
+/**
+ * UserDB is used to hardcode some customers and sellers used for debugging and testing functionality
+ * @author Ross Parsons
+ * */
+
 package com.finalproject.group11.users;
 
 import com.finalproject.group11.model.Cart;

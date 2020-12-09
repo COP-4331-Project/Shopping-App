@@ -1,9 +1,15 @@
 package com.finalproject.group11.view;
-//import com.finalproject.group11.users.Placeholder;
 
 import javax.swing.*;
 import java.io.*;
 
+
+/**
+ * GUI acts as the main entry point for the shopping application.
+ * The shopping app starts with login panel.
+ * After the user logs in, the SellerView or ProductView will be displayed depending on user's role.
+ * @author Ross Parsons
+ * */
 
 public class GUI {
 
