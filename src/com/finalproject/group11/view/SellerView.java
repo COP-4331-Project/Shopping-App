@@ -10,6 +10,7 @@ import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import com.finalproject.group11.controller.SellerController;
@@ -86,7 +87,7 @@ public class SellerView {
 		submitProductButton.addActionListener(
 				new ActionListener() {
 	        		public void actionPerformed(ActionEvent event) {
-	        			Product newProduct = new Product(new Random().nextInt(5), newProductName.getText(),
+	        			Product newProduct = new Product(new Random().nextInt(5) + 1, newProductName.getText(),
 	        					Double.parseDouble(newProductPrice.getText()), newProductDescription.getText(),
 	        					Integer.parseInt(newProductQuantity.getText()));
 	        			seller.add_product_to_sell(newProduct);
@@ -168,8 +169,11 @@ public class SellerView {
 		sellerReport.setProfit(1);
 		SellerReportView sellerReportView = new SellerReportView(sellerReport);
 		
+		JButton addProductButton = createAddProductButton(allProductsPanel);
+		allProductsPanel.add(addProductButton);
+		
 		JButton viewSellerReportButton = new JButton("View business details");
-		allProductsPanel.add(viewSellerReportButton);
+		
 		viewSellerReportButton.addActionListener(
 				new ActionListener() {
 	        		public void actionPerformed(ActionEvent event) {
@@ -180,6 +184,8 @@ public class SellerView {
 	        		}
 				}
 			);
+		
+		allProductsPanel.add(viewSellerReportButton);
 		
 		this.seller.get_seller_products_list().forEach(product -> {				
 			JPanel productPanel = productView.createProductPanel(product, this.productImgs[product.getId()-1], false);
@@ -200,9 +206,6 @@ public class SellerView {
 			allProductsPanel.add(productPanel);
 		});
 		
-		JButton addProductButton = createAddProductButton(allProductsPanel);
-		allProductsPanel.add(addProductButton);
-		
 		return allProductsPanel;
 	}
 	
@@ -219,7 +222,7 @@ public class SellerView {
 		JPanel allProductsPanel = sellerView.displaySellerInventory();
 		sellerPanel.add(allProductsPanel);
 		
-		frame.add(sellerPanel);
+		frame.add(new JScrollPane(sellerPanel));
         frame.setSize(640, 480);  
         frame.setLocationRelativeTo(null);  
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
