@@ -30,6 +30,7 @@ public class LoginView extends JPanel implements Serializable {
     private JLabel usernameLabel;
     private JLabel passwordLabel;
     private UserDB udb;
+    private ImageIcon img;
 
 
     /**
@@ -52,12 +53,20 @@ public class LoginView extends JPanel implements Serializable {
 
         this.setBorder(new LineBorder(Color.blue));
 
+        /* Put shopping cart image on login screen */
+        String imgPath = "assets/images/sc.jpg";
+        img = new ImageIcon(imgPath);
+        Image imgResize = img.getImage();
+        Image newImg = imgResize.getScaledInstance(100,100, java.awt.Image.SCALE_SMOOTH);
+        img = new ImageIcon(newImg);
+
         this.add(usernameLabel);
         this.add(usernameTextField);
         this.add(passwordLabel);
         this.add(passwordField);
         this.add(loginButton);
         this.add(registerButton);
+        this.add(new JLabel(img));
 
         /**
          *
