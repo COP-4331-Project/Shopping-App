@@ -1,6 +1,9 @@
 package com.finalproject.group11.view;
 
 import javax.swing.*;
+
+import com.finalproject.group11.model.Product;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,15 +25,17 @@ public class ProductView extends JFrame {
         height = h;
     }
 
-    public JPanel createProductPanel(String title, String imgPath, double price, int units, String desc, boolean isCustomer) {
+//    public JPanel createProductPanel(String title, String imgPath, double price, int units, String desc, boolean isCustomer) {
+    	public JPanel createProductPanel(Product product, String imgSrc, boolean isCustomer) {
+
         // Making and defining the product panel
         JPanel productPanel = new JPanel();
         productPanel.setLayout(new FlowLayout());
         productPanel.setBackground(Color.white);
 
         // Adding the product title and image to the productPanel
-        productPanel.add(new JLabel(title), SwingConstants.CENTER);
-        ImageIcon img = new ImageIcon(imgPath);
+        productPanel.add(new JLabel(product.getName()), SwingConstants.CENTER);
+        ImageIcon img = new ImageIcon(imgSrc);
         Image imgResize = img.getImage();
         Image newImg = imgResize.getScaledInstance(100,100, java.awt.Image.SCALE_SMOOTH);
         img = new ImageIcon(newImg);
@@ -42,64 +47,64 @@ public class ProductView extends JFrame {
         infoPanel.setBackground(Color.WHITE);
 
         // Arranging the infoPanel vertically
-        infoPanel.add(new JLabel("Price: $" + price, SwingConstants.CENTER), new GridLayout(1,1));
-        JLabel unitsLabel = new JLabel("Units: " + units, SwingConstants.CENTER);
+        infoPanel.add(new JLabel("Price: $" + product.getPrice(), SwingConstants.CENTER), new GridLayout(1,1));
+        JLabel unitsLabel = new JLabel("Units: " + product.getQuantity(), SwingConstants.CENTER);
         infoPanel.add(unitsLabel, new GridLayout(2,1));
-        infoPanel.add(new JLabel(desc, SwingConstants.CENTER), new GridLayout(3,1));
+        infoPanel.add(new JLabel(product.getDescription(), SwingConstants.CENTER), new GridLayout(3,1));
         if (isCustomer) {
         	JButton buyBtn = new JButton("Buy Now!");
 
             // Add a buyBtn action listener
             buyBtn.addActionListener(e -> {
-                System.out.println("Buy button pressed for " + title);
+                System.out.println("Buy button pressed for " + product.getName());
 
-                if(title.equals("Apple") && appleCount < units) {
+                if(product.getName().equals("Apple") && appleCount < product.getQuantity()) {
                     appleCount += 1;
                     // Call the method to decrement the number of units of a product
                     // Set the text of the units label again
-                    unitsLabel.setText("Units: " + (units - appleCount));
+                    unitsLabel.setText("Units: " + (product.getQuantity() - appleCount));
                     // Add the price of the item to the shopping cart subtotal
-                    this.subtotal += price;
+                    this.subtotal += product.getPrice();
                     subtotalLabel.setText(String.format("Shopping Cart Subtotal: $%.2f", this.subtotal));
                     System.out.println("The subtotal is now $" + this.subtotal);
 
-                } else if(title.equals("Orange") && orangeCount < units) {
+                } else if(product.getName().equals("Orange") && orangeCount < product.getQuantity()) {
                     orangeCount += 1;
                     // Call the method to decrement the number of units of a product
                     // Set the text of the units label again
-                    unitsLabel.setText("Units: " + (units - orangeCount));
+                    unitsLabel.setText("Units: " + (product.getQuantity() - orangeCount));
                     // Add the price of the item to the shopping cart subtotal
-                    this.subtotal += price;
+                    this.subtotal += product.getPrice();
                     subtotalLabel.setText(String.format("Shopping Cart Subtotal: $%.2f", this.subtotal));
                     System.out.println("The subtotal is now $" + this.subtotal);
 
-                } else if(title.equals("Bananas") && bananasCount < units) {
+                } else if(product.getName().equals("Bananas") && bananasCount < product.getQuantity()) {
                     bananasCount += 1;
                     // Call the method to decrement the number of units of a product
                     // Set the text of the units label again
-                    unitsLabel.setText("Units: " + (units - bananasCount));
+                    unitsLabel.setText("Units: " + (product.getQuantity() - bananasCount));
                     // Add the price of the item to the shopping cart subtotal
-                    this.subtotal += price;
+                    this.subtotal += product.getPrice();
                     subtotalLabel.setText(String.format("Shopping Cart Subtotal: $%.2f", this.subtotal));
                     System.out.println("The subtotal is now $" + this.subtotal);
 
-                } else if(title.equals("Kiwi") && kiwiCount < units) {
+                } else if(product.getName().equals("Kiwi") && kiwiCount < product.getQuantity()) {
                     kiwiCount += 1;
                     // Call the method to decrement the number of units of a product
                     // Set the text of the units label again
-                    unitsLabel.setText("Units: " + (units - kiwiCount));
+                    unitsLabel.setText("Units: " + (product.getQuantity() - kiwiCount));
                     // Add the price of the item to the shopping cart subtotal
-                    this.subtotal += price;
+                    this.subtotal += product.getPrice();
                     subtotalLabel.setText(String.format("Shopping Cart Subtotal: $%.2f", this.subtotal));
                     System.out.println("The subtotal is now $" + this.subtotal);
 
-                } else if(title.equals("Mango") && mangoCount < units) {
+                } else if(product.getName().equals("Mango") && mangoCount < product.getQuantity()) {
                     mangoCount += 1;
                     // Call the method to decrement the number of units of a product
                     // Set the text of the units label again
-                    unitsLabel.setText("Units: " + (units - mangoCount));
+                    unitsLabel.setText("Units: " + (product.getQuantity() - mangoCount));
                     // Add the price of the item to the shopping cart subtotal
-                    this.subtotal += price;
+                    this.subtotal += product.getPrice();
                     subtotalLabel.setText(String.format("Shopping Cart Subtotal: $%.2f", this.subtotal));
                     System.out.println("The subtotal is now $" + this.subtotal);
                 }

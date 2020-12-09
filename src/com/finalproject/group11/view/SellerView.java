@@ -20,10 +20,12 @@ import com.finalproject.group11.model.SellerReport;
 public class SellerView {
 	private Seller seller;
 	private SellerController sellerController;
+	private String[] productImgs;
 	
-	public SellerView(Seller seller) throws FileNotFoundException, IOException {
+	public SellerView(Seller seller, String[] productImgs) throws FileNotFoundException, IOException {
 		this.seller = seller;
 		this.sellerController = new SellerController();
+		this.productImgs = productImgs;
 	}
 	
 	/**
@@ -52,7 +54,7 @@ public class SellerView {
 	 * @return parent JPanel to add other components to
 	 * @author Matthew Taylor
 	 *  */
-	private JPanel createSellerPanel() {
+	public JPanel createSellerPanel() {
 		JPanel sellerPanel = new JPanel();
 		sellerPanel.setLayout(new FlowLayout());
 		sellerPanel.setBackground(Color.white);
@@ -84,7 +86,7 @@ public class SellerView {
 		submitProductButton.addActionListener(
 				new ActionListener() {
 	        		public void actionPerformed(ActionEvent event) {
-	        			Product newProduct = new Product(new Random().nextInt(), newProductName.getText(),
+	        			Product newProduct = new Product(new Random().nextInt(5), newProductName.getText(),
 	        					Double.parseDouble(newProductPrice.getText()), newProductDescription.getText(),
 	        					Integer.parseInt(newProductQuantity.getText()));
 	        			seller.add_product_to_sell(newProduct);
@@ -179,10 +181,8 @@ public class SellerView {
 				}
 			);
 		
-		seller.get_seller_products_list().forEach(product -> {
-			JPanel productPanel = productView.createProductPanel(product.getName(), null, product.getPrice(),
-					product.getQuantity(), product.getDescription(), false);
-			
+		this.seller.get_seller_products_list().forEach(product -> {				
+			JPanel productPanel = productView.createProductPanel(product, this.productImgs[product.getId()-1], false);
 			JButton editButton = new JButton("Edit");
 			productPanel.add(editButton);
 			editButton.addActionListener(
@@ -206,18 +206,15 @@ public class SellerView {
 		return allProductsPanel;
 	}
 	
-	public static void setUpGui(Seller seller) throws FileNotFoundException, IOException
+	public static void setUpGui(Seller seller, String[] productImgs) throws FileNotFoundException, IOException
 	{
 		//TODO pass seller as arg
 
 		//Seller seller = new Seller(1, "Matt", "password");
-		SellerView sellerView = new SellerView(seller);
+		SellerView sellerView = new SellerView(seller, productImgs);
 		
 		JFrame frame = new JFrame("SellerView");
 		JPanel sellerPanel = sellerView.createSellerPanel();
-
-		Product newProduct1 = new Product(127, "Xbox", 499.99, "New console by Microsoft.", 0);
-		seller.add_product_to_sell(newProduct1);
 		
 		JPanel allProductsPanel = sellerView.displaySellerInventory();
 		sellerPanel.add(allProductsPanel);
