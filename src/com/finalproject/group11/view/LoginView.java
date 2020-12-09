@@ -8,6 +8,8 @@ package com.finalproject.group11.view;
 
 import com.finalproject.group11.controller.LoginAuthenticate;
 import com.finalproject.group11.users.UserDB;
+import com.finalproject.group11.model.Product;
+import com.finalproject.group11.model.Seller;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -16,6 +18,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
 /**
@@ -79,19 +82,29 @@ public class LoginView extends JPanel implements Serializable {
                 System.out.println(username);
                 char[] password = passwordField.getPassword();
                 System.out.println(password);
+                
+             // if user that logged in is a Customer, a dashboard of products is returned.
+                ProductView myPV = new ProductView(500, 500);                
+                
+                String[] productImgs = {"assets/images/apple.jpg", "assets/images/orange.jpg", 
+                                        "assets/images/bananas.jpg", "assets/images/kiwi.jpg", 
+                                        "assets/images/mango.jpg"};
+                
+                Product apple = new Product(1, "Apple", 1.99, "Freshly Picked!", 25);
+        		Product orange = new Product(2, "Orange", 1.49, "Citrus Sweetness!", 44);
+        		Product banana = new Product(3, "Bananas", 3.75, "Ripe and Ready!!", 12);
+        		Product kiwi = new Product(4, "Kiwi", 1.25, "Green Goodness!", 36);
+        		Product mango = new Product(5, "Mango", 2.25, "Mango Madness!", 47);
 
                 try {
                     if(LoginAuthenticate.passwordCheck(username, password) == "CUSTOMER")
                     {
-                        // if user that logged in is a Customer, a dashboard of products is returned.
-                        ProductView myPV = new ProductView(500, 500);
-
                         /* Create productPanels */
-                        JPanel applePanel = myPV.createProductPanel("Apple","assets/images/apple.jpg", 1.99, 25, "Freshly Picked!", true);
-                        JPanel orangePanel = myPV.createProductPanel("Orange","assets/images/orange.jpg", 1.49, 44, "Citrus Sweetness!", true);
-                        JPanel bananaPanel = myPV.createProductPanel("Bananas","assets/images/bananas.jpg", 3.75, 12, "Ripe & Ready!", true);
-                        JPanel kiwiPanel = myPV.createProductPanel("Kiwi","assets/images/kiwi.jpg", 1.25, 36, "Green Goodness!", true);
-                        JPanel mangoPanel = myPV.createProductPanel("Mango","assets/images/mango.jpg", 2.25, 47, "Mango Madness!", true);
+                    	JPanel applePanel = myPV.createProductPanel(apple,"assets/images/apple.jpg", true);
+                        JPanel orangePanel = myPV.createProductPanel(orange,"assets/images/orange.jpg", true);
+                        JPanel bananaPanel = myPV.createProductPanel(banana,"assets/images/bananas.jpg", true);
+                        JPanel kiwiPanel = myPV.createProductPanel(kiwi,"assets/images/kiwi.jpg", true);
+                        JPanel mangoPanel = myPV.createProductPanel(mango,"assets/images/mango.jpg", true);
 
                         /* Add the productPanels to the productContainer */
                         myPV.setUPGUI(applePanel, orangePanel, bananaPanel, kiwiPanel, mangoPanel);
@@ -102,8 +115,15 @@ public class LoginView extends JPanel implements Serializable {
                         /* if user is a seller, the SellerView will be displayed */
                     }else if(LoginAuthenticate.passwordCheck(username, password) == "SELLER"){
                         System.out.println("You are logged in as a Seller.");
-                        SellerView.setUpGui(udb.getSeller(username));
-
+                        Seller seller = udb.getSeller(username);
+                        
+                        seller.add_product_to_sell(apple);
+                		seller.add_product_to_sell(orange);
+                		seller.add_product_to_sell(banana);
+                		seller.add_product_to_sell(kiwi);
+                		seller.add_product_to_sell(mango);
+                        
+                		SellerView.setUpGui(seller, productImgs);
                     }
                 } catch (IOException | ClassNotFoundException ioException) {
                     ioException.printStackTrace();
