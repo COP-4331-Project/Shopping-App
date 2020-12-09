@@ -1,10 +1,15 @@
+/**
+ * RegisterView
+ * the UI for user registration for the Shopping App
+ * @author Ross Parsons
+ * */
+
 package com.finalproject.group11.view;
 
 import com.finalproject.group11.model.Cart;
 import com.finalproject.group11.model.Customer;
 import com.finalproject.group11.model.Seller;
 import com.finalproject.group11.users.UserDB;
-import com.finalproject.group11.users.Users;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,7 +30,7 @@ public class RegisterView extends JPanel {
     private JLabel customerRoleLabel;
     private JLabel sellerRoleLabel;
     private ButtonGroup g;
-    private static JOptionPane confirmationPane;
+
 
 
     public RegisterView()
@@ -49,7 +54,7 @@ public class RegisterView extends JPanel {
 
         this.confirm = new JButton("Confirm");
 
-        // add JRadioButtons to group to make only one button selectable
+        /* add JRadioButtons to group to make only one button selectable */
         g = new ButtonGroup();
         g.add(customerRole);
         g.add(sellerRole);
@@ -114,6 +119,7 @@ public class RegisterView extends JPanel {
     }
 
 
+    /* Entry point for setting up the RegisterView Panel */
     public static void setUpGui()
     {
         JFrame frame = new JFrame("Register");

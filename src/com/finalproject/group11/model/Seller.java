@@ -13,6 +13,8 @@ public class Seller extends User implements Serializable{
     transient private ArrayList<Product> seller_products_list;
     private static final String role = "SELLER";
     transient SellerController sellerController;
+
+    /* serialVersionUID needed to be overidden for serialization */
     private static final long serialVersionUID = 3922558168240961117L;
 
 
